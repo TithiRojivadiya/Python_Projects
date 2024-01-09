@@ -1,11 +1,36 @@
-print("Welcome to KBC made by Tithi Rojivadiya.")
-print("\nRules :")
-print("(1)There are 16 questions of General Knowledge.")
+import os
+
+def robo_speaker(text):
+    os.system(f'powershell -Command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak(\'{text}\')"')
+
+
+
+print("\n")
+robo_speaker("Welcome to KBC")
+print("\n\nRules :")
+print("(1)There are 16 questions of General Knowledge. The prize money increases with question no. You have to answer in 1,2,3,4.")
+print("\n")
+print("(2)If you give correct answer, You get prize money according to question no.")
+print("\n")
+print("(3)If you quit the game you get prize money of previous question. If you want to quit the game enter 5.")
+print("\n")
+print("(4)If you give wrong answer, \nIf you between question no. 1 to 5 , You will get Rs. 0.\nIf you between question no. 6 to 10  , You will get Rs. 10,000\nIf you between question no. 11 to 16 , You will get Rs. 3,20,000.")
+print("\n")
+print("(5)There are three LifeLines : (A)50:50,(B)Expert's Advice,(C)Switch the Question. You can choose only one lifeline at a time. ")
+print("\n")
+print("(A)50:50 ::: Will remove two wrong answer.")
+print("\n")
+print("(B)Expert's Advice ::: Guide you.")
+print("\n")
+print("(C)Switch the Question ::: will give you 6 options of subject. Choose one subject and you will be asked other question according to chozen subject instead of main question.")
+print("\n\n\n")
+print("Are you ready ? Let's go...")
+print("\n\n\n")
 
 questions = [
     [" Which river is the longest in the world?","The Nile River","The Amazon River","The Ganga River","The Yamuna River",1],
 
-    ["Name of the first university of India?","Nalanda University","Taxshila University","Taxshila University","Taxshila University",1],
+    ["Name of the first university of India?","Nalanda University","Taxshila University","Valabhi University","Bharatiya University",1],
 
     ["Who was the first President of India?","Mahatma Gandhi"," Dr. Rajendra Prasad","Jawaharlal Nehru","Saradar Patel",2],
 
@@ -82,6 +107,7 @@ for i in range(0,len(questions),1) :
 
     ans = int(input("Enter your answer :"))
     if ans == questions[i][5] :
+            robo_speaker("Correct Answer")
             print("\n################## Correct Answer ##################")
             print(f"Congratulations You have won Rs. {money[i]}")
 
@@ -169,6 +195,7 @@ for i in range(0,len(questions),1) :
                     ans2 = int(input("Enter your answer :"))
 
                     if ans2==questions[i][5]:
+                        robo_speaker("Correct Answer")
                         print("\n################## Correct Answer ##################")
                         print(f"Congratulations You have won Rs. {money[i]}")
                         LifeLine.remove("(A)50:50")
@@ -199,6 +226,7 @@ for i in range(0,len(questions),1) :
                     ans3 = int(input("Enter Your Answer :"))
 
                     if ans3 == questions[i][5]:
+                        robo_speaker("Correct Answer")
                         print("\n################## Correct Answer ##################")
                         print(f"Congratulations You have won Rs. {money[i]}")
                         LifeLine.remove("(B)Expert's Advice")
@@ -241,6 +269,7 @@ for i in range(0,len(questions),1) :
                         a=int(input("Enter Your Answer :"))
 
                         if a==switch_question[0][5] :
+                            robo_speaker("Correct Answer")
                             print("\n################## Correct Answer ##################")
                             print(f"Congratulations You have won Rs. {money[i]}")
                             LifeLine.remove("(C)Switch the Question")
@@ -271,6 +300,7 @@ for i in range(0,len(questions),1) :
                         b=int(input("Enter Your Answer :"))
 
                         if b==switch_question[1][5] :
+                            robo_speaker("Correct Answer")
                             print("\n################## Correct Answer ##################")
                             print(f"Congratulations You have won Rs. {money[i]}")
                             LifeLine.remove("(C)Switch the Question")
@@ -302,6 +332,7 @@ for i in range(0,len(questions),1) :
                         c=int(input("Enter Your Answer :"))
 
                         if c==switch_question[2][5] :
+                            robo_speaker("Correct Answer")
                             print("\n################## Correct Answer ##################")
                             print(f"Congratulations You have won Rs. {money[i]}")
                             LifeLine.remove("(C)Switch the Question")
@@ -332,6 +363,7 @@ for i in range(0,len(questions),1) :
                         d=int(input("Enter Your Answer :"))
 
                         if d==switch_question[3][5] :
+                            robo_speaker("Correct Answer")
                             print("\n################## Correct Answer ##################")
                             print(f"Congratulations You have won Rs. {money[i]}")
                             LifeLine.remove("(C)Switch the Question")
@@ -346,7 +378,7 @@ for i in range(0,len(questions),1) :
                             break
 
                         else :
-                            print("\n################## Wrong Answer ##################")
+                            robo_speaker("Wrong Answer")
                             print(f"Correct Answer is {switch_question[3][5]})")
                             if i>4 and i<=9 :
                                 print(f"Congratulations You have won Rs. {money[4]}")
@@ -362,13 +394,14 @@ for i in range(0,len(questions),1) :
                         e=int(input("Enter Your Answer :"))
 
                         if e==switch_question[4][5] :
+                            robo_speaker("Correct Answer")
                             print("\n################## Correct Answer ##################")
                             print(f"Congratulations You have won Rs. {money[i]}")
                             LifeLine.remove("(C)Switch the Question")
 
                         elif e==0:
                             if i==0 :
-                                print("Try Next time ...")
+                                robo_speaker("Try Next time ...")
                             else :
                                 print(f"\nYou have won {money[i-1]}")
                                 print("Congratulations!!!!")
@@ -376,7 +409,8 @@ for i in range(0,len(questions),1) :
                             break
 
                         else :
-                            print("\n################## Wrong Answer ##################")
+                            
+                            robo_speaker("Wrong Answer")
                             print(f"Correct Answer is {switch_question[4][5]})")
                             if i>4 and i<=9 :
                                 print(f"Congratulations You have won Rs. {money[4]}")
@@ -392,33 +426,39 @@ for i in range(0,len(questions),1) :
                         f=int(input("Enter Your Answer :"))
 
                         if f==switch_question[5][5] :
+                            robo_speaker("Correct Answer")
                             print("\n################## Correct Answer ##################")
                             print(f"Congratulations You have won Rs. {money[i]}")
                             LifeLine.remove("(C)Switch the Question")
 
                         elif f==0:
                             if i==0 :
-                                print("Try Next time ...")
+                                robo_speaker("Try Next time ...")
                             else :
-                                print(f"\nYou have won {money[i-1]}")
-                                print("Congratulations!!!!")
-                                print(f"Correct Answer is {switch_question[5][5]})")
+                                robo_speaker(f"You have won {money[i-1]}")
+                                print(f"You have won {money[i-1]}")
+                                robo_speaker("Congratulations!!!!")
+                                robo_speaker(f"Correct Answer is {switch_question[5][5]})")
                             break
 
                         else :
-                            print("\n################## Wrong Answer ##################")
-                            print(f"Correct Answer is {switch_question[5][5]})")
+                            robo_speaker("Wrong Answer")
+                            robo_speaker(f"Correct Answer is {switch_question[5][5]})")
                             if i>4 and i<=9 :
                                 print(f"Congratulations You have won Rs. {money[4]}")
+                                robo_speaker(f"Congratulations You have won Rs. {money[4]}")
                             if i>9 and i<=15 :
                                 print(f"Congratulations You have won Rs. {money[9]}")
+                                robo_speaker(f"Congratulations You have won Rs. {money[9]}")
                             break
 
     else : #wrong answer
-        print("\n################## Wrong Answer ##################")
-        print(f"Correct Answer is {questions[i][5]})")
+        robo_speaker("Wrong Answer")
+        robo_speaker(f"Correct Answer is {questions[i][5]})")
         if i>4 and i<=9 :
+            robo_speaker(f"Congratulations You have won Rs. {money[4]}")
             print(f"Congratulations You have won Rs. {money[4]}")
         if i>9 and i<=15 :
+            robo_speaker(f"Congratulations You have won Rs. {money[9]}")
             print(f"Congratulations You have won Rs. {money[9]}")
-            break
+        break
