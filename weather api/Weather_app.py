@@ -16,7 +16,8 @@ win.title("WEATHER APP")
 win.geometry("500x500")
 
 # Open the image using Pillow
-image = Image.open("C:\\Users\\troji\\OneDrive\\Desktop\\Python_Projects\\background.jpg")
+image = Image.open('C:\\Users\\troji\\OneDrive\\Desktop\\Python_Projects\\weather api\\background.jpg')
+
 # Convert the image to PhotoImage
 background_image = ImageTk.PhotoImage(image)
 background_label = Label(win, image=background_image)
@@ -55,7 +56,5 @@ per_label1.place(x=235,y=390,height=50,width=200)
 #Button
 done_button = Button(win,text="Go",font=("Time New Roman",20,"bold"),relief=RAISED,bg="yellow",command=data_get)
 done_button.place(x=190,y=165,height=40,width=100)
-
-
 
 win.mainloop()
