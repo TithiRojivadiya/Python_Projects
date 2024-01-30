@@ -3,6 +3,8 @@ from tkinter import ttk
 import requests
 from PIL import Image, ImageTk
 import textwrap
+
+
 def data_get():
     day = day_name.get()
     sign = sign_name.get()
