@@ -2,6 +2,21 @@ from tkinter import *
 from tkinter import ttk
 import requests
 from PIL import Image, ImageTk
+import textwrap
+def data_get():
+    day = day_name.get()
+    sign = sign_name.get()
+    link = requests.get(f"http://sandipbgt.com/theastrologer/api/horoscope/{sign}/{day}").json()
+
+    # Use textwrap.wrap to wrap the text
+    wrapped_text = textwrap.wrap(link.get('horoscope'), width=40)
+
+    # Join the wrapped lines into a single string
+    reply_text = "\n".join(wrapped_text)
+
+    reply_label.config(text=reply_text)
+
+
 
 window = Tk()
 window.title("Horoscope app by Tithi")
@@ -38,12 +53,16 @@ day_list = ['yesterday','today','tomorrow']
 day_combo = ttk.Combobox(window,values=day_list,font=("Time New Roman",25,"bold"),textvariable=day_name)
 day_combo.place(x=135,y=155,height=50,width=200)
 
+#reply
+reply_label = Label(window,text="",font=("Time New Roman",14,"bold"))
+reply_label.place(x=25,y=250,height=450,width=440)
+
 
 #button
+button = Button(window,text="GO",font=("Time New Roman",20,"bold"),command=data_get,bg="yellow")
+button.place(x=355,y=95,height=110,width=110)
 
 
 window.mainloop()
 
-# API
-# "sunsign_list": "http://sandipbgt.com/theastrologer/api/sunsigns",
-# "today": "http://sandipbgt.com/theastrologer/api/horoscope/{sunsign}/today",
+
